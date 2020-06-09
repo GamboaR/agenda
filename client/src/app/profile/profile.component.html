@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+      
+       <div class="col-md-6">
+        <h1 class="form-signin-heading">{{'bienvenido' | translate}}</h1>
+        
+        <div class="form-horizontal">
+          <div class="form-group">
+            <p class="form-control-static">{{ details?.name }}</p>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h1>{{'usuarios' | translate}}</h1>
+        <table class="table table-striped" *ngIf="users">
+          <thead>
+            <tr>
+              <th class="bg-success" scope="col">#</th>
+              <th class="bg-success" scope="col">{{'nombre' | translate}}</th>
+              <th class="bg-success" scope="col">{{'correo' | translate}}</th>
+              <th class="bg-success" scope="col">Telefono</th>
+              <th  class="bg-success" scope="col">Fecha de nacimiento</th>
+
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let x of users;  let idx = index">
+              <td> {{idx +1}}</td>
+              <td > 
+                <p  >{{x.name}} </p>
+              </td>
+              <td>{{x.email}}</td>
+              <td>(55){{x.phone}}</td>
+              <td>{{x.date | date}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

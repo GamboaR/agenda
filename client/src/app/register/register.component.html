@@ -1,0 +1,60 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-5 login-form">
+      <h1>{{'registrate' | translate}}</h1>
+      <p class="lead"><a routerLink="/login">{{'simiembro' | translate}}</a> </p>
+      <form (submit)="register()" [formGroup]="form">
+        <div class="avatar">
+          <img src="../../assets/avatar.png" alt="Avatar">
+        </div>
+        <h2 class="text-center">{{'miembro' | translate}}</h2>   
+        <div class="form-group">
+        
+          <mat-form-field >
+            <mat-label>Nombre</mat-label>
+            <input type="text"  formControlName="name"  placeholder="{{'nombre' | translate}}" matInput >
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field >
+            <mat-label>Email</mat-label>
+            <input  matInput formControlName="email" [errorStateMatcher]="matcher"
+                   placeholder="Ex. pat@example.com">
+            <mat-error *ngIf="form.hasError('email') && !form.hasError('required')">
+             Ingresa un email valido
+            </mat-error>
+            <mat-error *ngIf="form.hasError('required')">
+              Email es <strong>requerido</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field >
+            <mat-label>Contraseña</mat-label>
+          <input matInput type="password"  class="form-control"   name="password" formControlName="password" placeholder="{{'contrasena' | translate}}">
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input formControlName="date"  matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="example-full-width">
+            <mat-label>Telefono</mat-label>
+            <span matPrefix>+55 &nbsp;</span>
+            <input type="tel" formControlName="phone"  matInput placeholder="555-555-1234">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field>
+        </div>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">{{'registrate' | translate}}!</button>
+      </form>
+    </div>
+  </div>
+
+</div>
